@@ -5,8 +5,11 @@
 #include <sys/wait.h>
 #include <string.h>
 
+// created using this tutorial: 'https://indradhanush.github.io/blog/writing-a-unix-shell-part-1/'
+
 char **get_input(char*);
 #define BUFFER_LEN 100
+
 int main() {
     printf("Welcome to MSchell\n");
     
@@ -18,6 +21,7 @@ int main() {
         printf("~~~~(Ɛ:> ");
         fgets(input, BUFFER_LEN, stdin);
         
+        // the input from fgets is newline terminated, I need a null terminated string
         input[(strlen(input) - 1)] = '\0';
 
         command = get_input(input);
